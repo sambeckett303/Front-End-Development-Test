@@ -1,6 +1,6 @@
 <template>
     <div id="appWrapper">
-        <div v-if="showIphone" id="iphone"></div>
+        <div id="iphone"></div>
         <div id="phoneAppWrapper">
             <phone-app></phone-app>
         </div>
@@ -15,30 +15,6 @@
         data: () => ({
             showIphone: true,
         }),
-        beforeMount: function()
-        {
-            this.configureSize();
-            window.addEventListener('resize', this.configureSize);
-        },
-        methods:
-        {
-            configureSize: function()
-            {
-                var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-                if (w <= 450)
-                {
-                    this.showIphone = false; 
-                }
-                else
-                {
-                    this.showIphone = true;
-                }
-            }
-        },
-        beforeDestroy: function ()
-        {
-          window.removeEventListener('resize', this.configureSize);
-        },
         components:
         {
             PhoneApp
@@ -58,13 +34,25 @@
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
     }
-    
+    body
+    {
+        margin: 0;
+    }
+
     #appWrapper
     {
         width: 450px;
         height: 750px;
         margin: 0 auto;
         position: relative;
+
+        @media screen and (max-width: 450px) {
+            width: 100%;
+        }
+
+        @media screen and (max-width: 375px) {
+            width: 375px;
+        }
     }
     #iphone
     {
@@ -73,6 +61,10 @@
         background: url(/img/iphone.png);
         background-size: contain;
         margin: 0 auto;
+
+        @media screen and (max-width: 450px) {
+            display: none;
+        }
     }
     #phoneAppWrapper
     {
@@ -83,5 +75,12 @@
         top: 97px;
         left: 38px;
         overflow: hidden;
+
+        @media screen and (max-width: 450px) {
+            top: 0px;
+            right: 0px;
+            left: 0px;
+            margin: 0 auto;
+        }
     }
 </style>

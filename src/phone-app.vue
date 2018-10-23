@@ -1,5 +1,5 @@
 <template>
-	<div @mousedown="handleTouchStart" @mousemove="handleTouchMove" @mouseup="handleTouchEnd">
+	<div @mousedown="handleTouchStart" @touchstart="handleTouchStart" @mousemove="handleTouchMove" @touchmove="handleTouchMove" @mouseup="handleTouchEnd">
 		<div class="videoSlideshowContainer" :style="{ top: slideshowTop }">
 			<menu-area></menu-area>
 			<video-slideshow ref="videoSlideshow" :videos="videos"></video-slideshow>
