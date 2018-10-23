@@ -16,7 +16,7 @@
 			<div class="text">NEXT VIDEO</div>
 			<div class="rightArrow"></div>
 		</div>
-		<video-player :active="videoActive" :video="videoToPlay"></video-player>
+		<video-player :active="videoActive" :video="videoToPlay" @close="stopVideo"></video-player>
 	</div>
 </template>
 
@@ -42,6 +42,10 @@
 			{
 				this.videoActive = true;
 				this.videoToPlay = video.video;
+			},
+			stopVideo: function()
+			{
+				this.videoActive = false;
 			},
 			nextVideo: function()
 			{

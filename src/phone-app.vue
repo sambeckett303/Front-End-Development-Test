@@ -89,7 +89,7 @@
         	{
         		if (this.$refs.videoSlideshow.videoActive)
         		{
-        			this.$refs.videoSlideshow.videoActive = false;
+        			return;
         		}
         		else
         		{
@@ -108,7 +108,7 @@
         	},
         	handleTouchMove: function(event)
         	{
-        		if ( ! this.xDown || ! this.yDown ) {
+        		if ( ! this.xDown || ! this.yDown || this.$refs.videoSlideshow.videoActive) {
 			        return;
 			    }
 
@@ -131,10 +131,7 @@
 			        if ( xDiff > 0 ) {
 			        	if (this.currentView == "slideshow")
 			        	{
-			        		if (xDiff > 1)
-			        		{
-			        			this.$refs.videoSlideshow.nextVideo();
-			        		}
+			        		this.$refs.videoSlideshow.nextVideo();
 			        	}
 			        	else
 			        	{
@@ -151,10 +148,7 @@
 			        } else {
 			        	if (this.currentView == "slideshow")
 			        	{
-			        		if (xDiff < -1)
-			        		{
-			        			this.$refs.videoSlideshow.prevVideo();
-			        		}
+			        		this.$refs.videoSlideshow.prevVideo();
 			        	}
 			        	else
 			        	{

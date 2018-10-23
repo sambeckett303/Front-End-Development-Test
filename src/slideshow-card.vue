@@ -2,7 +2,7 @@
 	<div class="cardContainer" :style="{ left: video.left }" :class="[video.type]">
 		<transition name="fade">
 			<div v-if="video.active">
-				<div class="playButton" @click.stop="$emit('playVideo', video)"></div>
+				<div class="playButton" @mousedown.stop="$emit('playVideo', video)"></div>
 				<div class="sportArea" :class="[video.type]">
 					<div class="sportLabel">{{video.type}}</div>
 					<div class="timeLabel">{{video.length}}</div>
